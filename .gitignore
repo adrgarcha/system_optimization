@@ -1,2 +1,7 @@
+# Entorno virtual de Python
 venv/
 __pycache__/
+
+# Credenciales
+credentials.json
+authorized_user.json

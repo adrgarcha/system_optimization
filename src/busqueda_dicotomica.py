@@ -1,4 +1,5 @@
 import pandas as pd
+from sheets_api import export_to_sheets
 
 def busqueda_dicotomica(a, b, funcion, epsilon, longitud):
     if(epsilon <= 0):
@@ -20,6 +21,7 @@ def busqueda_dicotomica(a, b, funcion, epsilon, longitud):
     lambda_value = (a + b)/2 - epsilon
     mu_value = (a + b)/2 + epsilon
     df.loc[len(df)] = [a, b, lambda_value, mu_value, funcion(lambda_value), funcion(mu_value)]
+    export_to_sheets(df, "Busqueda dicotomica")
     print(df)
 
 funcion1 = lambda x: x**2 + 2*x
@@ -27,4 +29,3 @@ funcion1 = lambda x: x**2 + 2*x
 funcion2 = lambda x: x**4 - 14*x**3 + 60*x**2 - 70*x
 
 busqueda_dicotomica(-2, 1, funcion1, 0.0001, 0.001)
-busqueda_dicotomica(0, 2, funcion2, 0.0001, 0.001)
